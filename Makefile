@@ -6,8 +6,6 @@ SYSTEM_EXTENSION_DIR ?= $(LIBDIR)/password-store/extensions
 
 MANDIR ?= $(PREFIX)/share/man
 
-BASHCOMPDIR ?= $(PREFIX)/share/bash-completion/completions
-
 all:
 	@echo "pass-$(PROG) is a shell script and does not need compilation, it can be simply executed."
 	@echo
@@ -18,8 +16,6 @@ install:
 	install -d "$(DESTDIR)$(MANDIR)/man1" && install -m 0644 pass-outdated.1 "$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1"
 	install -d "$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/"
 	install -m 0755 outdated.bash "$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash"
-	install -d "$(DESTDIR)$(BASHCOMPDIR)/"
-	install -m 644 pass-outdated.bash.completion  "$(DESTDIR)$(BASHCOMPDIR)/pass-$(PROG)"
 	@echo
 	@echo "pass-$(PROG) is installed succesfully"
 	@echo
@@ -27,5 +23,4 @@ install:
 uninstall:
 	rm -vrf \
 		"$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash" \
-		"$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1" \
-		"$(DESTDIR)$(BASHCOMPDIR)/pass-$(PROG)"
+		"$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1"
